@@ -1,0 +1,11 @@
+release/0_main.o
+release/1_AnimationOperator.o
+release/1_GameOperator.o
+release/1_MapOperator.o
+release/1_PlayerOperator.o
+release/2_EnemiesOperator.o
+release/2_Zombie.o
+release/3_DamageObjects.o
+release/3_PlayerBullet.o
+release/GUIOperator.o
+release/LevelOperator.o

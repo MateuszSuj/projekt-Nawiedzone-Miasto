@@ -1,0 +1,59 @@
+#include "3_ZombiesOperator.h"
+#include <iostream>
+
+ZombiesOperator::ZombiesOperator()
+{
+    spawnPoints = {
+        sf::Vector2f(200,100),
+        sf::Vector2f(300,100),
+        sf::Vector2f(400,100),
+        sf::Vector2f(500,100)};
+}
+
+void ZombiesOperator::spawn(int amount){
+
+    for(int i = 0; i < (int)spawnPoints.size(); i++){
+        for(int j = 0; j < amount; j++){
+            Zombie temp;
+            temp.setPosition(spawnPoints[i]);
+            zombies.emplace_back(temp);
+        }
+    }
+}
+
+int ZombiesOperator::updateBehaviours(sf::Vector2f playerPosition){
+    int damageDealedAmount = 0;
+    sf::Vector2f direction;
+    sf::Vector2f positionDifference;
+    for(int i = 0; i < (int)zombies.size(); i++){
+        positionDifference = playerPosition - zombies[i].getPosition();
+
+        float distance = sqrt(positionDifference.x * positionDifference.x + positionDifference.y * positionDifference.y);
+
+        direction = {positionDifference.x / (std::abs(positionDifference.x) + std::abs(positionDifference.y)),
+                     positionDifference.y / (std::abs(positionDifference.x) + std::abs(positionDifference.y))};
+
+        if(distance < 65) {
+            zombies[i].setIsStunned(true);
+            if (zombies[i].getStunTime() == 0){
+                zombies[i].setStunTime(stunTime);
+                damageDealedAmount += zombies[i].getDamage();
+            }
+        }
+
+        if(zombies[i].getIsStunned() == true){
+            if(zombies[i].getStunTime() == 0)zombies[i].setIsStunned(false);
+            else zombies[i].diffStunTime(1);
+        }
+        else zombies[i].move(direction);
+    }
+    return -damageDealedAmount;
+}
+
+void ZombiesOperator::draw(sf::RenderWindow &window){
+    for(int i = 0; i < (int)zombies.size(); i++){
+        zombies[i].draw(window);
+    }
+}
+
+

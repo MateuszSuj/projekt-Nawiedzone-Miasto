@@ -1,0 +1,11 @@
+debug/0_main.o
+debug/1_AnimationOperator.o
+debug/1_GameOperator.o
+debug/1_MapOperator.o
+debug/1_PlayerOperator.o
+debug/2_EnemiesOperator.o
+debug/2_Zombie.o
+debug/3_DamageObjects.o
+debug/3_PlayerBullet.o
+debug/GUIOperator.o
+debug/LevelOperator.o

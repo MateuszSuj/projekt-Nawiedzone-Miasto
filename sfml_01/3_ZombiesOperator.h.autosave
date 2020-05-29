@@ -1,0 +1,23 @@
+#ifndef ZOMBIESOPERATOR_H
+#define ZOMBIESOPERATOR_H
+
+#include <sfml\Graphics.hpp>
+
+#include <vector>
+#include <cmath>
+
+#include "4_Zombie.h"
+
+class ZombiesOperator {
+private:
+    int stunTime = 60;
+    std::vector <Zombie> zombies;
+    std::vector <sf::Vector2f> spawnPoints;
+public:
+    ZombiesOperator();
+    void spawn(int amount);
+    int updateBehaviours(sf::Vector2f playerPosition);
+    void draw(sf::RenderWindow &window);
+};
+
+#endif // ZOMBIESOPERATOR_H
