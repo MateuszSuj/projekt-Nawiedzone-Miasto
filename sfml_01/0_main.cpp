@@ -19,7 +19,7 @@
 // MAIN //
 int main() {
 
-        // SETTINGS - VARIABLES //
+        // SETTINGS - VARIABLES // zmiana kom
 
         int res_x = 1600; // x variable of window
         int res_y = 900; // y variable of window
